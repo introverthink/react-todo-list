@@ -12,7 +12,15 @@ function App() {
       setTasks([...tasks, { text: input, completed: false }]);
       setInput("");
     }
-  };
+  }
+
+  const editTask = (index, newText) => {
+    setTasks(
+      tasks.map((task, i) => 
+        i === index ? {...task, text: newText} : task
+      )
+    );
+  }
 
   const toggleTask = (index) => {
     setTasks(
@@ -20,11 +28,11 @@ function App() {
         i === index ? { ...task, completed: !task.completed } : task
       )
     );
-  };
+  }
 
   const deleteTask = (index) => {
     setTasks(tasks.filter((task, i) => i !== index));
-  };  
+  }
 
   return (
     <>
@@ -49,6 +57,7 @@ function App() {
               >
                 {task.text}
               </span>
+              <input type="text" placeholder="Edit task" value={task.text} onChange={(e) => editTask(index, e.target.value)} />
               <button onClick={() => deleteTask(index)}>X</button>
             </li>
           ))}
