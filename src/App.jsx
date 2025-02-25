@@ -57,7 +57,7 @@ function App() {
               >
                 {task.text}
               </span>
-              <input type="text" placeholder="Edit task" value={task.text} onChange={(e) => editTask(index, e.target.value)} />
+              <input type="text" placeholder="Edit" value={task.text} onChange={(e) => editTask(index, e.target.value)} />
               <button onClick={() => deleteTask(index)}>X</button>
             </li>
           ))}
